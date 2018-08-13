@@ -6,7 +6,7 @@
 /*   By: nmostert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 10:44:33 by nmostert          #+#    #+#             */
-/*   Updated: 2018/08/06 12:18:24 by nmostert         ###   ########.fr       */
+/*   Updated: 2018/08/13 15:40:58 by nmostert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ void	ft_putnbr_fd(int n, int fd);
 void	ft_putstr_fd(char const *s, int fd);
 void	ft_putendl_fd(char const *s, int fd);
 
+char	*ft_lastdigits(char *str);
+char	*ft_secondword(char *str);
 char	*ft_strdup(const char *s1);
 char	*ft_itoa(int n);
 char	**ft_strsplit(char const *s, char c);

@@ -6,7 +6,7 @@
 #    By: nmostert <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/30 10:52:24 by nmostert          #+#    #+#              #
-#    Updated: 2018/07/20 10:38:16 by nmostert         ###   ########.fr        #
+#    Updated: 2018/08/13 15:34:58 by nmostert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,6 +77,8 @@ CFILES=ft_atoi.c \
 		ft_lstiter.c \
 		ft_lstdelone.c \
 		ft_lstdel.c \
+		ft_secondword.c \
+		ft_lastdigits.c \
 		get_next_line.c \
 
 OBJ=$(CFILES:%.c=%.o)
