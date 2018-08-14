@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lastdigits.c                                    :+:      :+:    :+:   */
+/*   ft_containscol.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmostert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/13 14:09:29 by nmostert          #+#    #+#             */
-/*   Updated: 2018/08/14 15:51:15 by nmostert         ###   ########.fr       */
+/*   Created: 2018/08/14 15:42:30 by nmostert          #+#    #+#             */
+/*   Updated: 2018/08/14 15:48:16 by nmostert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_lastdigits(char *str)
+int	ft_containscol(char **s, int col, int height, int c)
 {
 	int i;
 
-	i = ft_strlen(str) - 1;
-	if (str[i])
+	if (!s)
+		return (0);
+	i = 0;
+	while (i < height)
 	{
-		while (str[i])
-		{
-			while (str[i] != ' ')
-			{
-				i--;
-			}
-			i += 1;
-			while (str[i] >= '0' && str[i] <= '9')
-			{
-				write(1, &str[i], 1);
-				i++;
-			}
-			break ;
-		}
+		if (s[i][col] == (char)c)
+			return (1);
+		else
+			i++;
 	}
-	return (str);
+	return (0);
 }

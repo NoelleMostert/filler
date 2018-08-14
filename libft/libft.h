@@ -6,7 +6,7 @@
 /*   By: nmostert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 10:44:33 by nmostert          #+#    #+#             */
-/*   Updated: 2018/08/14 10:33:32 by nmostert         ###   ########.fr       */
+/*   Updated: 2018/08/14 15:53:48 by nmostert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 int		ft_strequ(char const *s1, char const *s2);
 int		ft_strnequ(char const *s1, char const *s2, size_t n);
 int		get_next_line(const int fd, char **line);
+int		ft_containscol(char **s, int col, int height, int c);
 
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	*ft_memset(void *str, int c, size_t n);

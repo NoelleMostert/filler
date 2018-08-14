@@ -6,7 +6,7 @@
 #    By: nmostert <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/30 10:52:24 by nmostert          #+#    #+#              #
-#    Updated: 2018/08/14 10:28:57 by nmostert         ###   ########.fr        #
+#    Updated: 2018/08/14 15:54:46 by nmostert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,6 +82,7 @@ CFILES=ft_atoi.c \
 		get_next_line.c \
 		ft_puttab.c \
 		ft_puttab_fd.c \
+		ft_containscol.c \
 
 OBJ=$(CFILES:%.c=%.o)
 

@@ -6,7 +6,7 @@
 /*   By: nmostert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 13:22:25 by nmostert          #+#    #+#             */
-/*   Updated: 2018/08/14 11:43:51 by nmostert         ###   ########.fr       */
+/*   Updated: 2018/08/14 16:25:17 by nmostert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ void	ft_getpiece(t_map *f)
 	f->piece.piece = (char**)ft_memalloc(sizeof(char *) * f->piece.heightp + 1);
 	
 	printf("%s\n", f->line);
-	get_next_line(f->fd, &(f->line));
-	fprintf(stderr,"%s\n", f->line);
+//	get_next_line(f->fd, &(f->line));
+//	fprintf(stderr,"%s\n", f->line);
 	
 	while (i < f->piece.heightp)
 	{
@@ -106,6 +106,10 @@ int main(void)
 //	{
 		ft_getmapsize(f);
 		ft_getpiece(f);
+		trimtop(f);
+		trimbot(f);
+		trimleft(f);
+		trimright(f);
 //	}
 
 	f->turn++;
