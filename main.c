@@ -6,7 +6,7 @@
 /*   By: nmostert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 13:22:25 by nmostert          #+#    #+#             */
-/*   Updated: 2018/08/14 16:25:17 by nmostert         ###   ########.fr       */
+/*   Updated: 2018/08/16 16:51:47 by nmostert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void	ft_getplayer(t_map *f)
 		f->player.us = 'X';
 		f->player.them = 'O';
 	}
-	printf("%s\n", f->line);
-	printf("%c\n", f->player.us);
-	printf("%c\n", f->player.them);
+//	printf("%s\n", f->line);
+//	printf("%c\n", f->player.us);
+//	printf("%c\n", f->player.them);
 	free(f->line);
 }
 
@@ -47,13 +47,13 @@ void	ft_getmapsize(t_map *f)
 		f->board.board = (char**)ft_memalloc(sizeof(char *) * f->board.
 				heightb + 1);
 	}
-	printf("%s\n", f->line);
+//	printf("%s\n", f->line);
 	
 	get_next_line(f->fd, &(f->line));
 	
-	fprintf(stderr,"%s\n", f->line);
-	printf("The height %i\n", f->board.heightb);
-	printf("The length %i\n", f->board.lengthb);
+//	fprintf(stderr,"%s\n", f->line);
+//	printf("The height %i\n", f->board.heightb);
+//	printf("The length %i\n", f->board.lengthb);
 
 	while (i < f->board.heightb)
 	{
@@ -61,7 +61,7 @@ void	ft_getmapsize(t_map *f)
 		f->board.board[i] = ft_strdup(4 + f->line);
 		i++;
 	}
-	ft_puttab_fd(f->board.board, 2);
+//	ft_puttab_fd(f->board.board, 2);
 
 	f->board.board[f->board.heightb] = 0;
 }
@@ -78,7 +78,7 @@ void	ft_getpiece(t_map *f)
 	f->piece.lengthp = ft_atoi(ft_strsplit(f->line, ' ')[2]);
 	f->piece.piece = (char**)ft_memalloc(sizeof(char *) * f->piece.heightp + 1);
 	
-	printf("%s\n", f->line);
+//	printf("%s\n", f->line);
 //	get_next_line(f->fd, &(f->line));
 //	fprintf(stderr,"%s\n", f->line);
 	
@@ -88,7 +88,7 @@ void	ft_getpiece(t_map *f)
 		f->piece.piece[i] = ft_strdup(f->line);
 		i++;
 	}
-	ft_puttab_fd(f->piece.piece, 2);
+//	ft_puttab_fd(f->piece.piece, 2);
 
 	f->piece.piece[f->piece.heightp] = 0;
 }
@@ -99,18 +99,20 @@ int main(void)
 
 	f = ft_memalloc(sizeof(t_map));
 	f->turn = 0;
-	f->fd = open("filler.txt", O_RDONLY);
+	f->fd = 0; //open("filler.txt", O_RDONLY);
 	
 	ft_getplayer(f);
-//	while (1)
-//	{
+	while (1)
+	{
 		ft_getmapsize(f);
 		ft_getpiece(f);
 		trimtop(f);
 		trimbot(f);
 		trimleft(f);
 		trimright(f);
-//	}
+		ft_newpiecesize(f);
+		mapcycle(f);
+	}
 
 	f->turn++;
 	
