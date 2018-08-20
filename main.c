@@ -6,7 +6,7 @@
 /*   By: nmostert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 13:22:25 by nmostert          #+#    #+#             */
-/*   Updated: 2018/08/16 16:51:47 by nmostert         ###   ########.fr       */
+/*   Updated: 2018/08/20 15:26:23 by nmostert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,9 @@ int main(void)
 		trimright(f);
 		ft_newpiecesize(f);
 		mapcycle(f);
+		final_place(f);
+		if (f->turn > 10)
+			break ;
 	}
 
 	f->turn++;

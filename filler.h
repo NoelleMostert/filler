@@ -6,7 +6,7 @@
 /*   By: nmostert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/20 11:28:19 by nmostert          #+#    #+#             */
-/*   Updated: 2018/08/16 16:54:16 by nmostert         ###   ########.fr       */
+/*   Updated: 2018/08/20 15:26:14 by nmostert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,15 @@ typedef struct	s_trim
 	char	**trim;
 	int		h;
 	int		l;
-	int		trim_top;
-	int		trim_bottom;
-	int		trim_left;
-	int		trim_right;
+	int		top;
+	int		bottom;
+	int		left;
+	int		right;
+	int		top_c;
+	int		bottom_c;
+	int		left_c;
+	int		right_c;
+
 }				t_trim;
 
 typedef struct	s_board
@@ -74,7 +79,8 @@ void			trimbot(t_map *f);
 void			trimleft(t_map *f);
 void			trimright(t_map *f);
 void			ft_newpiecesize(t_map *f);
-int				valid(t_map *f);
+int				valid(t_map *f, int x, int y);
 void			mapcycle(t_map *f);
+void			final_place(t_map *f);
 
 #endif
