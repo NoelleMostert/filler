@@ -6,7 +6,7 @@
 /*   By: nmostert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 13:22:25 by nmostert          #+#    #+#             */
-/*   Updated: 2018/08/20 15:26:23 by nmostert         ###   ########.fr       */
+/*   Updated: 2018/08/21 16:43:36 by nmostert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@
 void	ft_getplayer(t_map *f)
 {
 	get_next_line(f->fd, &(f->line));
-	if(ft_strchr(f->line, 1))
-	{
-		f->player.us = 'O';
-		f->player.them = 'X';
-	}
-	else
+	if(f->line[10] == 1)
 	{
 		f->player.us = 'X';
 		f->player.them = 'O';
+	}
+	else
+	{
+		f->player.us = 'O';
+		f->player.them = 'X';
 	}
 //	printf("%s\n", f->line);
 //	printf("%c\n", f->player.us);
@@ -111,13 +111,14 @@ int main(void)
 		trimleft(f);
 		trimright(f);
 		ft_newpiecesize(f);
-		mapcycle(f);
-		final_place(f);
-		if (f->turn > 10)
+		validmove(f);
+		if (f->turn == -1)
 			break ;
+//		fprintf(stderr, "entering final place\n");
+		final_place(f);
+//		fprintf(stderr, "exiting final place\n");
+		f->turn += 1;
 	}
-
-	f->turn++;
-	
+	ft_putendl("0 0\n");
 	return (0);
 }

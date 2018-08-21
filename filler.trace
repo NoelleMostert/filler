@@ -1,6 +1,5 @@
-seed = 8656
-O: error on input
-./nmostert.filler: Segfault at 0
-./resources/players/champely.filler won
+seed = 8093
+./nmostert.filler: Segfault at 12
+./nmostert.filler won
 Score:
-0AGAINST0
+12AGAINST0

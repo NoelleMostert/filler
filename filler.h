@@ -6,7 +6,7 @@
 /*   By: nmostert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/20 11:28:19 by nmostert          #+#    #+#             */
-/*   Updated: 2018/08/20 15:26:14 by nmostert         ###   ########.fr       */
+/*   Updated: 2018/08/21 14:05:39 by nmostert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,9 @@ void			trimleft(t_map *f);
 void			trimright(t_map *f);
 void			ft_newpiecesize(t_map *f);
 int				valid(t_map *f, int x, int y);
-void			mapcycle(t_map *f);
+void			validmove(t_map *f);
 void			final_place(t_map *f);
+int				score_gen(int x, int y, t_map *f);
+int				absdiff(int a, int b);
 
 #endif

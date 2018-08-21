@@ -6,7 +6,7 @@
 /*   By: nmostert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 11:44:04 by nmostert          #+#    #+#             */
-/*   Updated: 2018/08/20 15:25:02 by nmostert         ###   ########.fr       */
+/*   Updated: 2018/08/21 16:14:58 by nmostert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,14 +94,14 @@ void	ft_newpiecesize(t_map *f)
 	f->trim.trim = (char **)ft_memalloc(sizeof(char *) * f->trim.h + 1);
 	
 	
-	fprintf(stderr, "Piece height %i\n", f->piece.heightp);
-	fprintf(stderr, "Trim top %i\n", f->trim.top);
-	fprintf(stderr, "Trim bot  %i\n", f->trim.bottom);
-	fprintf(stderr, "Piece length %i\n", f->piece.lengthp);
-	fprintf(stderr, "Trim right %i\n", f->trim.right);
-	fprintf(stderr, "Trim left %i\n", f->trim.left);
-	fprintf(stderr, "Trim Height %i\n", f->trim.h);
-	fprintf(stderr, "Trim Length %i\n", f->trim.l);
+//	fprintf(stderr, "Piece height %i\n", f->piece.heightp);
+//	fprintf(stderr, "Trim top %i\n", f->trim.top);
+///	fprintf(stderr, "Trim bot  %i\n", f->trim.bottom);
+//	fprintf(stderr, "Piece length %i\n", f->piece.lengthp);
+//	fprintf(stderr, "Trim right %i\n", f->trim.right);
+//	fprintf(stderr, "Trim left %i\n", f->trim.left);
+//	fprintf(stderr, "Trim Height %i\n", f->trim.h);
+//	fprintf(stderr, "Trim Length %i\n", f->trim.l);
 
 	while (i < f->trim.h)
 	{
@@ -109,8 +109,8 @@ void	ft_newpiecesize(t_map *f)
 		i++;
 	}
 	f->trim.trim[f->trim.h] = 0;
-	ft_putstr_fd("ORIGINAL\n", 2);	
-	ft_puttab_fd(f->piece.piece, 2);
-	ft_putstr_fd("TRIM\n", 2);	
-	ft_puttab_fd(f->trim.trim, 2);
+//	ft_putstr_fd("ORIGINAL\n", 2);	
+//	ft_puttab_fd(f->piece.piece, 2);
+//	ft_putstr_fd("TRIM\n", 2);	
+//	ft_puttab_fd(f->trim.trim, 2);
 }
