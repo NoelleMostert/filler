@@ -27,9 +27,6 @@ void	ft_getplayer(t_map *f)
 		f->player.us = 'O';
 		f->player.them = 'X';
 	}
-//	printf("%s\n", f->line);
-//	printf("%c\n", f->player.us);
-//	printf("%c\n", f->player.them);
 	free(f->line);
 }
 
@@ -47,23 +44,16 @@ void	ft_getmapsize(t_map *f)
 		f->board.board = (char**)ft_memalloc(sizeof(char *) * f->board.
 				heightb + 1);
 	}
-//	printf("%s\n", f->line);
-	
+	fprintf(stderr, "Doing get map\n");
 	get_next_line(f->fd, &(f->line));
-	
-//	fprintf(stderr,"%s\n", f->line);
-//	printf("The height %i\n", f->board.heightb);
-//	printf("The length %i\n", f->board.lengthb);
-
 	while (i < f->board.heightb)
 	{
 		get_next_line(f->fd, &(f->line));
 		f->board.board[i] = ft_strdup(4 + f->line);
 		i++;
 	}
-//	ft_puttab_fd(f->board.board, 2);
-
-	f->board.board[f->board.heightb] = 0;
+	fprintf(stderr, "Exiting map now bye\n");
+	//f->board.board[f->board.heightb] = 0;
 }
 
 void	ft_getpiece(t_map *f)
@@ -77,18 +67,12 @@ void	ft_getpiece(t_map *f)
 	f->piece.heightp = ft_atoi(ft_strsplit(f->line, ' ')[1]);
 	f->piece.lengthp = ft_atoi(ft_strsplit(f->line, ' ')[2]);
 	f->piece.piece = (char**)ft_memalloc(sizeof(char *) * f->piece.heightp + 1);
-	
-//	printf("%s\n", f->line);
-//	get_next_line(f->fd, &(f->line));
-//	fprintf(stderr,"%s\n", f->line);
-	
 	while (i < f->piece.heightp)
 	{
 		get_next_line(f->fd, &(f->line));
 		f->piece.piece[i] = ft_strdup(f->line);
 		i++;
 	}
-//	ft_puttab_fd(f->piece.piece, 2);
 
 	f->piece.piece[f->piece.heightp] = 0;
 }
@@ -97,7 +81,7 @@ int main(void)
 {
 	t_map *f;
 
-	f = ft_memalloc(sizeof(t_map));
+	f = (t_map *)ft_memalloc(sizeof(t_map));
 	f->turn = 0;
 	f->fd = 0; //open("filler.txt", O_RDONLY);
 	

@@ -31,7 +31,6 @@ void	validmove(t_map *f)
 		{	//fprintf(stderr, "entering if valid\n");
 			if (valid(f, x, y) == 1)
 			{
-				fprintf(stderr, "entered valid\n");
 				if (score < score_gen(x, y, f))
 				{
 					score = score_gen(x, y, f);
@@ -55,21 +54,6 @@ int		valid(t_map *f, int x, int y)
 	j = -1;
 	overlap = 0;
 
-//	if (x + f->piece.lengthp >= f->board.lengthb)
-//		return (-1);
-//	if (y + f->piece.heightp >= f->board.heightb)
-//		return (-1);
-
-//	fprintf(stderr, "x is %i\n", x);
-//	fprintf(stderr, "y is %i\n\n", y);
-//	fprintf(stderr, "us is %i\n", f->player.us);
-//	fprintf(stderr, "them is %i\n", f->player.them);
-//	ft_putendl_fd("BOARD",2);
-//	ft_puttab_fd(f->board.board ,2);
-//	ft_putendl_fd("Piece",2);
-//	ft_puttab_fd(f->piece.piece ,2);
-//	ft_putendl_fd("Trim",2);
-//	ft_puttab_fd(f->trim.trim ,2);
 	while (++i < f->trim.h)
 	{
 		j = -1;
@@ -77,15 +61,13 @@ int		valid(t_map *f, int x, int y)
 		{
 			if (f->trim.trim[i][j] == '*')
 			{
-			//	fprintf(stderr, "here 3\n");
-				if (f->board.board[x + i][y + j] == f->player.us || f->board.board[x + i][y + j] == f->player.us + 32)
+				if (ft_tolower(f->board.board[x + i][y + j]) == ft_tolower(f->player.us))
 					overlap++;
-				else if (ft_tolower(f->board.board[x + i][y + j]) == f->player.them)
+				else if (ft_tolower(f->board.board[x + i][y + j]) == ft_tolower(f->player.them))
 					return (0);
 			}
 		}
 	}
-//	fprintf(stderr, "overlap is %i\n", overlap);
 	return (overlap);
 }
 
@@ -95,8 +77,7 @@ void	final_place(t_map *f)
 	int y;
 
 	x = f->placer.topx - f->trim.top;
-	y = f->placer.topy - f->trim.right;
-//	fprintf(stderr, "calling the final place\n");	
+	y = f->placer.topy - f->trim.right;	
 	ft_putnbr(x);
 	ft_putstr(" ");
 	ft_putnbr(y);
