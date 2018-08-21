@@ -44,7 +44,6 @@ void	ft_getmapsize(t_map *f)
 		f->board.board = (char**)ft_memalloc(sizeof(char *) * f->board.
 				heightb + 1);
 	}
-	fprintf(stderr, "Doing get map\n");
 	get_next_line(f->fd, &(f->line));
 	while (i < f->board.heightb)
 	{
@@ -52,8 +51,6 @@ void	ft_getmapsize(t_map *f)
 		f->board.board[i] = ft_strdup(4 + f->line);
 		i++;
 	}
-	fprintf(stderr, "Exiting map now bye\n");
-	//f->board.board[f->board.heightb] = 0;
 }
 
 void	ft_getpiece(t_map *f)
@@ -90,17 +87,16 @@ int main(void)
 	{
 		ft_getmapsize(f);
 		ft_getpiece(f);
-		trimtop(f);
-		trimbot(f);
-		trimleft(f);
-		trimright(f);
-		ft_newpiecesize(f);
+		trimtl(&f->piece);
+		//trimtop(f);
+		//trimbot(f);
+		//trimleft(f);
+		//trimright(f);
+		//ft_newpiecesize(f);
 		validmove(f);
 		if (f->turn == -1)
 			break ;
-//		fprintf(stderr, "entering final place\n");
 		final_place(f);
-//		fprintf(stderr, "exiting final place\n");
 		f->turn += 1;
 	}
 	ft_putendl("0 0\n");
