@@ -19,6 +19,8 @@ typedef struct	s_piece
 	char	**piece;
 	int		heightp;
 	int		lengthp;
+	int		height_trim;
+	int		length_trim;
 }				t_piece;
 
 typedef struct	s_trim
@@ -75,9 +77,12 @@ typedef struct	s_map
 }				t_map;
 
 void			trimtop(t_map *f);
-void			trimbot(t_map *f);
+void			trimtl(t_piece *p);
+//void			trimbot(t_map *f);
+//void			trimright(t_map *f);
 void			trimleft(t_map *f);
-void			trimright(t_map *f);
+void			trimbot(t_piece *p);
+void			trimright(t_piece *p);
 void			ft_newpiecesize(t_map *f);
 int				valid(t_map *f, int x, int y);
 void			validmove(t_map *f);

@@ -14,11 +14,64 @@
 #include <fcntl.h>
 #include <stdio.h>
 
+int			calc_x_trim(t_piece *p, int i)
+{
+	int j;
+	int flag;
+
+	flag = p->lengthp;
+	while (i < p->heightp)
+	{
+		j = 0;
+		while (j < p->lengthp)
+		{
+			if (p->piece[i][j] == '*')
+			{
+				if (j < flag)
+					flag = j;
+				break ;
+			}
+			j++;
+		}
+		i++;
+	}
+	return (flag);
+}
+
+void	trimtl(t_piece *p)
+{
+	int		i;
+	char	**new_piece;
+
+	i = 0;
+	while (i < p->heightp)
+	{
+		if (ft_strchr(p->piece[i], '*') != NULL)
+			break ;
+		i++;
+	}
+	p->height_trim = i;
+	new_piece = (char **)malloc(sizeof(char *) * p->heightp - i);
+	p->length_trim = calc_x_trim(p, i);
+	i = 0;
+	while (i < p->heightp - p->height_trim)
+	{
+		new_piece[i] = ft_strdup(p->piece[i + p->height_trim] + p->length_trim);
+		i++;
+	}
+	p->piece = new_piece;
+	p->heightp -= p->height_trim;
+	p->lengthp -= p->length_trim;
+	trimbot(p);
+	trimright(p);
+	//return (1);
+}
+
 void	trimtop(t_map *f)
 {
 	f->trim.top_c = 0;
 	f->trim.top = 0;
-	while (f->trim.top < f->piece.heightp)
+	/*while (f->trim.top < f->piece.heightp)
 	{
 		if (ft_containsrow(f->piece.piece[f->trim.top], '*') == 0)
 		{
@@ -28,11 +81,12 @@ void	trimtop(t_map *f)
 		else
 			break ;
 	}
+	*/
 }
 
-void	trimbot(t_map *f)
+void	trimbot(t_piece *p)
 {
-	f->trim.bottom_c = f->piece.heightp - 1;
+	/*f->trim.bottom_c = f->piece.heightp - 1;
 	f->trim.bottom = 0;
 	while (f->trim.bottom_c > 0)
 	{
@@ -44,13 +98,24 @@ void	trimbot(t_map *f)
 		else
 			break ;
 	}
+	*/
+	int		j;
+
+	j = p->heightp - 1;
+	while (j > 0)
+	{
+		if (ft_strchr(p->piece[j], '*') != NULL)
+			break;
+		j--;
+	}
+	p->heightp = j + 1;
 }
 
 void	trimleft(t_map *f)
 {
 	f->trim.left_c = 0;
 	f->trim.left = 0;
-	while (f->trim.left_c < f->piece.lengthp)
+	/*while (f->trim.left_c < f->piece.lengthp)
 	{
 		if (ft_containscol(f->piece.piece, f->trim.left_c, f->piece.heightp, '*')
 				== 1)
@@ -60,14 +125,22 @@ void	trimleft(t_map *f)
 			f->trim.left_c++;
 			f->trim.left++;
 		}
-	}
+	}*/
 }
 
-void	trimright(t_map *f)
+void	trimright(t_piece *p)
 {
-	f->trim.right_c = f->piece.lengthp - 1;
-	f->trim.right = 0;
-	while (f->trim.right_c > 0)
+	int	i;
+
+	i = p->lengthp - 1;
+	while (i > 0)
+	{
+		if (ft_containscol(p->piece, i, p->heightp, '*') == 1)
+			break ;
+		i--;
+	}
+	p->lengthp = i + 1;
+	/*while (f->trim.right_c > 0)
 	{
 		if (ft_containscol(f->piece.piece, f->trim.right_c, f->piece.heightp,
 					'*') == 1)
@@ -78,6 +151,7 @@ void	trimright(t_map *f)
 			f->trim.right++;
 		}
 	}
+	*/
 }
 
 void	ft_newpiecesize(t_map *f)
@@ -91,26 +165,12 @@ void	ft_newpiecesize(t_map *f)
 
 	f->trim.h = f->piece.heightp - (f->trim.top + f->trim.bottom);
 	f->trim.l = f->piece.lengthp - (f->trim.right + f->trim.left);
-	f->trim.trim = (char **)ft_memalloc(sizeof(char *) * f->trim.h + 1);
-	
-	
-//	fprintf(stderr, "Piece height %i\n", f->piece.heightp);
-//	fprintf(stderr, "Trim top %i\n", f->trim.top);
-///	fprintf(stderr, "Trim bot  %i\n", f->trim.bottom);
-//	fprintf(stderr, "Piece length %i\n", f->piece.lengthp);
-//	fprintf(stderr, "Trim right %i\n", f->trim.right);
-//	fprintf(stderr, "Trim left %i\n", f->trim.left);
-//	fprintf(stderr, "Trim Height %i\n", f->trim.h);
-//	fprintf(stderr, "Trim Length %i\n", f->trim.l);
 
+	f->trim.trim = (char **)ft_memalloc(sizeof(char *) * f->trim.h + 1);
 	while (i < f->trim.h)
 	{
 		f->trim.trim[i] = (char *)ft_strndup(f->trim.left + f->piece.piece[f->trim.top + i], f->trim.l);
 		i++;
 	}
 	f->trim.trim[f->trim.h] = 0;
-//	ft_putstr_fd("ORIGINAL\n", 2);	
-//	ft_puttab_fd(f->piece.piece, 2);
-//	ft_putstr_fd("TRIM\n", 2);	
-//	ft_puttab_fd(f->trim.trim, 2);
 }
