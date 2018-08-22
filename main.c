@@ -27,7 +27,7 @@ void	ft_getplayer(t_map *f)
 		f->player.us = 'O';
 		f->player.them = 'X';
 	}
-	free(f->line);
+	//free(f->line);
 }
 
 void	ft_getmapsize(t_map *f)
