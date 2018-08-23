@@ -1,5 +1,4 @@
-seed = 8141
-./nmostert.filler: Segfault at 91
+seed = 8054
 ./nmostert.filler won
 Score:
-91AGAINST67
+189AGAINST155

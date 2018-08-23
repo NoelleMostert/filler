@@ -6,7 +6,7 @@
 #    By: nmostert <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/30 10:52:24 by nmostert          #+#    #+#              #
-#    Updated: 2018/08/20 15:21:47 by nmostert         ###   ########.fr        #
+#    Updated: 2018/08/21 17:27:12 by nmostert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,6 +85,7 @@ CFILES=ft_atoi.c \
 		ft_containscol.c \
 		ft_strndup.c \
 		ft_containsrow.c \
+		ft_strsplit_word.c \
 
 OBJ=$(CFILES:%.c=%.o)
 

@@ -1,38 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strsplit_word.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmostert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/24 12:02:39 by nmostert          #+#    #+#             */
-/*   Updated: 2018/08/22 16:40:23 by nmostert         ###   ########.fr       */
+/*   Created: 2018/08/21 17:25:43 by nmostert          #+#    #+#             */
+/*   Updated: 2018/08/22 16:32:24 by nmostert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+char	*ft_strsplit_word(char const *s, char c, size_t num)
 {
-	int		i;
-	int		neg;
-	int		num;
+	char		*arr;
+	size_t		i;
+	size_t		j;
+	size_t		k;
 
+	if (!s)
+		return (NULL);
 	i = 0;
-	neg = 0;
-	num = 0;
-	while (ft_isspace(str[i]))
-		i++;
-	if (str[i] == '-')
-		neg = 1;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
+	j = 0;
+	k = 0;
+	while (s[i] != '\0')
 	{
-		num = num * 10 + ((int)str[i] - '0');
-		i++;
+		while (s[i] == c)
+			i++;
+		if (s[i] == '\0')
+			break ;
+		j = i;
+		while (s[i] != c && i < (size_t)ft_strlen(s))
+			i++;
+		if (k + 1 == num)
+			arr = (char *)ft_strsub(s, j, (i - j));
+		k++;
 	}
-	if (neg == 1)
-		return (-num);
-	return (num);
+	return (arr);
 }

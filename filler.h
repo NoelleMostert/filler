@@ -6,7 +6,7 @@
 /*   By: nmostert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/20 11:28:19 by nmostert          #+#    #+#             */
-/*   Updated: 2018/08/21 14:05:39 by nmostert         ###   ########.fr       */
+/*   Updated: 2018/08/22 17:02:34 by nmostert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,6 @@ typedef struct	s_map
 
 void			trimtop(t_map *f);
 void			trimtl(t_piece *p);
-//void			trimbot(t_map *f);
-//void			trimright(t_map *f);
 void			trimleft(t_map *f);
 void			trimbot(t_piece *p);
 void			trimright(t_piece *p);
